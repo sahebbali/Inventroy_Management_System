@@ -3,6 +3,9 @@ const UsersController =require('../controllers/Users/UsersController')
 const BrandsController=require("../controllers/Brands/BrandsController");
 const CategoriesController = require("../controllers/Categories/CategoriesController");
 const CustomersController = require("../controllers/Customers/CustomersController");
+const PurchasesController = require("../controllers/Purchases/PurchasesController");
+const ReturnsController = require("../controllers/Returns/ReturnsController");
+
 const AuthVerifyMiddleware =require('../middlewares/AuthVerifyMiddleware')
 const router =express.Router();
 
@@ -44,6 +47,18 @@ router.get("/CustomersDropDown",AuthVerifyMiddleware,CustomersController.Custome
 router.get("/DeleteCustomer/:id",AuthVerifyMiddleware,CustomersController.DeleteCustomer);
 router.get("/CustomersDetailsByID/:id",AuthVerifyMiddleware,CustomersController.CustomersDetailsByID);
 
+
+
+//Purchases
+router.post("/CreatePurchases",AuthVerifyMiddleware,PurchasesController.CreatePurchases);
+router.get("/PurchasesList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,PurchasesController.PurchasesList);
+router.get("/PurchasesDelete/:id",AuthVerifyMiddleware,PurchasesController.PurchasesDelete);
+
+
+//Return
+router.post("/CreateReturns",AuthVerifyMiddleware,ReturnsController.CreateReturns);
+router.get("/ReturnsList/:pageNo/:perPage/:searchKeyword",AuthVerifyMiddleware,ReturnsController.ReturnsList);
+router.get("/ReturnDelete/:id",AuthVerifyMiddleware,ReturnsController.ReturnDelete);
 
 
 module.exports=router;

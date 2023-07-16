@@ -8,7 +8,7 @@ const UserVerifyEmailService= async (Request, DataModel) => {
         let OTPCode = Math.floor(100000 + Math.random() * 900000)
 
         // Database First process
-        let UserCount = (await DataModel.aggregate([{$match: {email: email}}, {$count: "total"}]))
+        let UserCount = (await DataModel.aggregate([{$match: {email: email}}, {$count: "total"}]),{ maxTimeMS: 20000 })
 
         if(UserCount.length>0){
             // OTP Insert

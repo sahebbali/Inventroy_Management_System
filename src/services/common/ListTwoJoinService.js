@@ -31,7 +31,7 @@ const ListTwoJoinService= async (Request, DataModel, SearchArray, JoinStage1,Joi
                     Rows:[{$skip: skipRow}, {$limit: perPage}],
                 }
                 }
-            ])
+            ],{ maxTimeMS: 20000 })
 
         }
         return {status: "success", data: data}

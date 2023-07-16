@@ -4,7 +4,7 @@ const DropDownService= async (Request,DataModel,Projection) => {
         let data = await DataModel.aggregate([
             {$match: {UserEmail:UserEmail}},
             {$project:Projection}
-        ])
+        ],{ maxTimeMS: 20000 })
         return {status: "success", data: data}
     }
     catch (error) {

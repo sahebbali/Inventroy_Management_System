@@ -19,7 +19,7 @@ const ListOneJoinService= async (Request, DataModel, SearchArray, JoinStage) => 
                     Rows:[{$skip: skipRow}, {$limit: perPage}]
                 }
                 }
-            ])
+            ],{ maxTimeMS: 20000 })
 
         }
         else {

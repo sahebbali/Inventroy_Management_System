@@ -7,7 +7,7 @@ const UserVerifyOtpService= async (Request, DataModel) => {
 
 
         //Database First Process
-        let OTPCount = await DataModel.aggregate([{$match: {email: email, otp: OTPCode, status: status}}, {$count: "total"}])
+        let OTPCount = await DataModel.aggregate([{$match: {email: email, otp: OTPCode, status: status}}, {$count: "total"}],{ maxTimeMS: 20000 })
 
         if (OTPCount.length>0) {
 

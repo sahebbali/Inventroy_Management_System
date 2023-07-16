@@ -43,7 +43,7 @@ exports.CategoriesDetailsByID=async (req, res) => {
 exports.DeleteCategories=async (req, res) => {
     let DeleteID=req.params.id;
     const ObjectId = mongoose.Types.ObjectId;
-    let CheckAssociate= await CheckAssociateService({CategoryID:ObjectId(DeleteID)},ProductsModel);
+    let CheckAssociate= await CheckAssociateService({CategoryID: new ObjectId(DeleteID)},ProductsModel);
     if(CheckAssociate){
         res.status(200).json({status: "associate", data: "Associate with Product"})
     }

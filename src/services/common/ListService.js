@@ -21,7 +21,7 @@ const ListService= async (Request,DataModel,SearchArray) => {
                         Rows:[{$skip: skipRow}, {$limit: perPage}],
                     }
                 }
-            ])
+            ],{ maxTimeMS: 20000 })
         }
         else {
             data = await DataModel.aggregate([

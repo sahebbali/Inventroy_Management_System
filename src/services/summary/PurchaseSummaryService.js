@@ -23,7 +23,7 @@ const PurchaseSummaryService= async (Request) => {
                     ]
                 }
             }
-        ])
+        ],{ maxTimeMS: 20000 })
 
         return {status: "success", data: data}
 

@@ -8,7 +8,7 @@ const UserResetPassService= async (Request,DataModel) => {
 
     try {
         // Database First Process
-        let OTPUsedCount = await OTPSModel.aggregate([{$match: {email: email, otp: OTPCode, status: statusUpdate}}, {$count: "total"}])
+        let OTPUsedCount = await OTPSModel.aggregate([{$match: {email: email, otp: OTPCode, status: statusUpdate}}, {$count: "total"}],{ maxTimeMS: 20000 })
 
         if (OTPUsedCount.length>0) {
             // Database Second Process
